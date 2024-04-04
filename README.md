@@ -1,3 +1,2 @@
 # Toto
-Auto Rickshaw Booking Website
 Toto is a convenient ride-sharing platform designed to make your commute easier and more enjoyable. With Toto, you can easily enter your pickup and drop-off locations to estimate your fare before booking your ride. Our platform offers transparent pricing with no surge fees, ensuring you always know what to expect. Additionally, we value your feedback and provide a seamless process for you to share your thoughts and experiences, helping us continuously improve our service. Whether you're looking for a reliable ride to work or a hassle-free way to explore the city, Toto has you covered.
