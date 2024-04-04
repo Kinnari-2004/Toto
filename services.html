@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/5b7efaafb7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="sub-header" >
+        <nav>
+            <a href="index.php"><img id="logo" src="media/web logo.png" alt=""></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa-solid fa-xmark" style="color: #ffffff;" onclick="hidemenu()"></i>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <!-- <li><a href="#" id="contact-link">Contact Us</a></li> -->
+                    <!-- <li><a href="#">Our App</a></li> -->
+                    <!-- <a href="login.html"><button id="login">Login</button></a> -->
+                    <!-- <a href="registration.html"><button id="signup">Register</button></a> -->
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" style="color: #ffffff;" onclick="showmenu()"></i>
+        </nav>
+        <script>
+            var navLinks = document.getElementById("navLinks");
+            function showmenu(){
+                navLinks.style.right = "0";
+            }
+            function hidemenu(){
+                navLinks.style.right = "-200px";
+            }
+        </script>
+         <h1>Our Services</h1>
+        </section>
+
+    <div class="services2">
+        <!-- <h2 class="services-title">Services Offered</h2> -->
+        <section class="services-list">
+            <div class="box">
+                <p><h3>Ride Booking Services</h3><br>
+                    <ul><li>Standard Ride: Book a standard car for your daily commute or occasional trips.</li><br>
+                    <li>Premium Ride: Upgrade to a premium vehicle for added comfort and style.</li><br>
+                    <li>Luxury Ride: Indulge in luxury with our high-end vehicles for special occasions or business
+                    trips.</li><br>
+                </ul>
+                </p>
+            </div>
+            <div class="box">
+                <p><h3>Additional Features</h3><br>
+                    <ul><li>24/7 Availability: Book rides anytime, anywhere, day or night.</li><br>
+                    <li>Real-Time Tracking: Track your ride in real-time and stay informed about the arrival time.</li><br>
+                    <li>Secure Payments: Enjoy peace of mind with secure payment options and transparent pricing.</li><br></p>
+                </ul>
+            </div>
+            <div class="box">
+                <p><h3>Customizable Options</h3><br>
+                    <ul><li>Stops: Add multiple stops to your journey and customize your route as needed.</li><br>
+                    <li>Vehicle Selection: Choose from a range of vehicle options based on your preferences and
+                    requirements.</li><br>
+                    <li>Driver Preferences: Specify driver preferences such as gender or language for a more personalized
+                    experience.</li><br>
+                    </ul>
+                </p>
+            </div>
+            <div class="box">
+                <p><h3>Safety Measures</h3><br>
+                    <ul><li>Driver Screening: Our drivers undergo thorough background checks and screening processes.</li><br>
+                    <li>Safety Guidelines: Learn about our safety protocols and measures to ensure a secure riding experience.</li><br>
+                    <li>Emergency Assistance: Access emergency assistance and support whenever needed during your ride.</li><br>
+                    </ul>
+                </p>
+            </div>
+            <div class="box">
+                <p><h3>How It Works</h3><br>
+                    <ul><li>Step-by-Step Guide: Understand the process of booking a ride, from selecting your vehicle to completing the journey.</li><br>
+                    <li>User Interface Overview: Familiarize yourself with the app interface and key features for a seamless booking experience.</li><br></ul></p>
+            </div>
+            <div class="box">
+                <p><h3>Specialized Services</h3><br>
+                    <ul><li>Airport Transfers: Schedule rides to and from airports with ease and reliability.</li><br>
+                    <li>Hourly Rentals: Hire a car and driver for a specified duration for maximum flexibility.</li><br>
+                    <li>Outstation Trips: Plan trips outside the city with our outstation booking options.</li><br></ul></p>
+            </div>
+    </div>
+    </section>
+    <footer class="foot">
+        <p>&#169 Toto,  All  Rights  Reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rickshaw Booking</title>
+  <style>
+    /* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the fare section */
+.fare {
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+/* Style for the fare container */
+.farecon {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the heading */
+.fare h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for the form */
+.form-fare {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style for the form labels */
+.form-fare label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Style for the select elements */
+.form-fare select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style for the fare button */
+.farebutton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.farebutton:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the fare result */
+#fareResult {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Style for the book ride button */
+.form-fare a {
+    text-align: center;
+    margin-top: 20px;
+    color: #218838;
+    text-decoration: none;
+}
+.form-fare a:hover {
+    text-decoration: underline;
+}
+
+.form-fare button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28783b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-fare button:hover {
+    background-color: #3ab055;
+}
+
+  </style>
+</head>
+
+<body>
+  <section class="fare">
+    <div class="farecon">
+      <h1>Auto Booking</h1>
+      <div class="form-fare">
+        <label for="pickup">Pickup Location:</label>
+        <select id="pickup" name="pickup">
+          <option value="PillaiCollege">Pillai's College</option>
+          <option value="PanvelStation">Panvel Station</option>
+          <option value="OrionMall">Orion Mall</option>
+          <option value="PillaisBoysHostel">Pillai's Boys Hostel</option>
+          <option value="VadaleLake">Vadale Lake</option>
+          <option value="KhandaColony">Khanda Colony</option>
+          <option value="Vichumbe">Vichumbe</option>
+          <!-- Add more options as needed -->
+        </select>
+        <label for="destination">Destination:</label>
+        <select id="destination" name="destination">
+          <option value="PillaiCollege">Pillai's College</option>
+          <option value="PanvelStation">Panvel Station</option>
+          <option value="OrionMall">Orion Mall</option>
+          <option value="PillaisBoysHostel">Pillai's Boys Hostel</option>
+          <option value="VadaleLake">Vadale Lake</option>
+          <option value="KhandaColony">Khanda Colony</option>
+          <option value="Vichumbe">Vichumbe</option>
+          <!-- Add more options as needed -->
+        </select>
+        <button class="farebutton" onclick="calculateFare()">
+          Estimated Fare
+        </button>
+        <p id="fareResult"></p>
+        <!-- <button class="book">Book</button> -->
+        <a onclick="bookRide()"><button>Book Your Ride</button></a>
+        <a href="index.php">Go to Home Page</a>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Define fare rates per kilometer and base fare
+    const farePerKm = 10; // Fare per kilometer in rupees
+    const baseFare = 23; // Base fare in rupees
+
+    // Location coordinates (latitude and longitude)
+    const locationCoordinates = {
+      PillaiCollege: [18.9902, 73.1277], // Pune coordinates18.9902° N, 73.1277° E pillai
+      PanvelStation: [18.98932, 73.12229], // Mumbai coordinates18.98932°N 73.12229°E station
+      OrionMall: [18.9934303, 73.1157848], // Delhi coordinates Latitude: 18.9934303. Longitude: 73.1157848 orion
+      PillaisBoysHostel: [19.017429, 73.107742], // Delhi coordinates Latitude: 18.9934303. Longitude: 73.1157848 orion
+      VadaleLake: [19.003990, 73.031723], // Delhi coordinates Latitude: 18.9934303. Longitude: 73.1157848 orion
+      KhandaColony: [19.0094, 73.1114], // 19.0094° N, 73.1114° EDelhi coordinates Latitude: 18.9934303. Longitude: 73.1157848 orion
+      Vichumbe: [18.9857, 73.1347] // 18.9857° N, 73.1347° E EDelhi coordinates Latitude: 18.9934303. Longitude: 73.1157848 orion
+      // Add more locations as needed
+    };
+
+    // Function to calculate distance using Haversine formula
+    function calculateDistanceInKm(source, destination) {
+      const earthRadiusKm = 6371; // Radius of the Earth in kilometers
+      const [lat1, lon1] = source;
+      const [lat2, lon2] = destination;
+
+      const dLat = degreesToRadians(lat2 - lat1);
+      const dLon = degreesToRadians(lon2 - lon1);
+
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const distance = earthRadiusKm * c;
+
+      return distance;
+    }
+
+    // Function to convert degrees to radians
+    function degreesToRadians(degrees) {
+      return degrees * (Math.PI / 180);
+    }
+
+    // Function to calculate fare
+    function calculateFare() {
+      const pickupLocation = document.getElementById("pickup").value;
+      const destinationLocation = document.getElementById("destination").value;
+
+      // Retrieve coordinates for pickup and destination locations
+      const source = locationCoordinates[pickupLocation];
+      const destination = locationCoordinates[destinationLocation];
+
+      // Calculate distance
+      const distanceInKm = calculateDistanceInKm(source, destination);
+
+      // Calculate fare
+      const fare = calculateFareBasedOnDistance(distanceInKm);
+
+      // Display fare
+      document.getElementById("fareResult").innerText = `Estimated fare for the journey is: ₹${fare.toFixed(2)}`;
+    }
+
+    // Function to calculate fare based on distance
+    function calculateFareBasedOnDistance(distanceInKm) {
+      // Calculate fare
+      const fare = baseFare + (farePerKm * distanceInKm);
+      return fare;
+    }
+
+    function bookRide() {
+      // Calculate fare first
+      calculateFare();
+
+      // Retrieve pickup and destination locations
+      const pickupLocation = document.getElementById("pickup").value;
+      const destinationLocation = document.getElementById("destination").value;
+
+      // Store pickup and destination locations in sessionStorage
+      sessionStorage.setItem("pickupLocation", pickupLocation);
+      sessionStorage.setItem("destinationLocation", destinationLocation);
+
+      // Store fare in sessionStorage
+      const fare = document.getElementById("fareResult").innerText;
+      sessionStorage.setItem("fare", fare);
+
+      // Redirect to invoice page
+      window.location.href = "invoice.html";
+    }
+
+  </script>
+  <!-- <script src="map.js"></script> -->
+</body>
+
+</html>

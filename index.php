@@ -1,0 +1,271 @@
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+    header("Location: index.html");
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toto</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/5b7efaafb7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.php"><img id="logo" src="media/web logo.png" alt=""></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa-solid fa-xmark" style="color: #ffffff;" onclick="hidemenu()"></i>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#" id="contact-link">Contact Us</a></li>
+                    <li><a href="#" id="nav-users">Users</a></li>
+                    <a href="logout.php"><button id="logout">Logout</button></a>
+                    <!-- <a href="login.php"><button id="login">Login</button></a> -->
+                    <!-- <a href="registration.php"><button id="signup">Register</button></a> -->
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" style="color: #ffffff;" onclick="showmenu()"></i>
+        </nav>
+        <div class="card">
+            <h1>Totally Toto</h1>
+            <h2>Share the Ride, Share the Joy!</h2>
+            <button class="pricebtn"><a href="fare.html">Book Now</a></button>
+        </div>
+    </section>
+    <!-- javascript for responsive toggle menu -->
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showmenu(){
+            navLinks.style.right = "0";
+        }
+        function hidemenu(){
+            navLinks.style.right = "-200px";
+        }
+    </script>
+
+    <section class="services">
+        <div class="services_box">
+        <h1>Looking for an Auto? Let's Toto!</h1>
+        <div class="services_category">
+            <div class="services_group" >
+                <img src="media/autoicon.png" alt="" class="services_img">
+                <h3 class="services_title">Doorstep Pickup</h3>
+                <p class="services_desc">We pick you up from where you are.</p>
+            </div>
+            <div class="services_group" >
+                <img src="media/tag.png" alt="" class="services_img">
+                <h3 class="services_title">Flat Rates</h3>
+                <p class="services_desc">No confusion. No Surge Pricing.</p>
+            </div>
+            <div class="services_group" >
+                <img src="media/safety.png" alt="" class="services_img">
+                <h3 class="services_title">Safety First</h3>
+                <p class="services_desc">Our features help keep your journeys safe.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="reviews" id="sec-users">
+        <h1>What our users say!</h1>
+        <div class="reviews-container">
+            <div class="box">
+                <i class="fa-solid fa-quote-left"></i>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>Toto is an absolute game-changer for my daily commute! I've been using this app for a while now, and I must say, it has truly simplified my travel experience.</p>
+                <div class="reviews-profile">
+                    <img src="media/male.jpg" alt="">
+                    <h3>Rahul Shah</h3>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-quote-left"></i>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star-half-stroke"></i>
+                </div>
+                <p>What sets Toto apart is its efficient pooling system, which not only saves me money but also reduces traffic congestion, making it an eco-friendly choice.</p>
+                <div class="reviews-profile">
+                    <img src="media/female.jpg" alt="">
+                    <h3>Neha Kulkarni</h3>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-quote-left"></i>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p> The interface is user-friendly, making it incredibly easy to book a ride. Highly recommend it to anyone looking for a convenient and cost-effective way to get around town!</p>
+                <div class="reviews-profile">
+                    <img src="media/male2.jpg" alt="">
+                    <h3>Aryan Negi</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById('nav-users').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default behavior of the link click
+        document.getElementById('sec-users').scrollIntoView({ behavior: 'smooth' }); // Scroll to the footer
+        });
+    </script>
+    <footer id="contact-footer">
+        <div class="pg-footer">
+            <footer class="footer">
+                <div class="footer-overlay"></div>
+                <svg class="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100"
+                    preserveAspectRatio="none">
+                    <path class="footer-wave-path"
+                        d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z">
+                    </path>
+                </svg>
+                <div class="footer-content">
+                    <div class="footer-content-column">
+                        <div class="footer-menu">
+                            <h2 class="footer-menu-name">Legal</h2>
+                            <ul id="menu-legal" class="footer-menu-list">
+                                <li
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
+                                    <a href="#">Privacy Notice</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <a href="#">Terms of Use</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-content-column">
+                        <div class="footer-menu">
+                            <h2 class="footer-menu-name"> Company</h2>
+                            <ul id="menu-company" class="footer-menu-list">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <a href="#">Contact</a>
+                                </li>
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                    <a href="#">News</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <a href="#">Careers</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-content-column">
+                        <div class="footer-menu">
+                            <h2 class="footer-menu-name">Quick Links</h2>
+                            <ul id="menu-quick-links" class="footer-menu-list">
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                    <a target="_blank" rel="noopener noreferrer" href="#">Support Center</a>
+                                </li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                    <a target="_blank" rel="noopener noreferrer" href="#">Service Status</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <a href="#">Security</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type_archive menu-item-object-customer">
+                                    <a href="#">Customers</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <a href="#">Reviews</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-content-column">
+                        <div class="footer-call-to-action">
+                            <h2 class="footer-call-to-action-title"> Let's Chat</h2>
+                            <p class="footer-call-to-action-description"> Have a support question?</p>
+                            <a class="footer-call-to-action-button button" href="#" target="_self"> Get in Touch </a>
+                        </div>
+                        <div class="footer-call-to-action">
+                            <h2 class="footer-call-to-action-title">Call Us On</h2>
+                            <p class="footer-call-to-action-link-wrapper"> <a class="footer-call-to-action-link"
+                                    href="tel:0124-64XXXX" target="_self"> 333-555-9999 </a></p>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <h2 class="footer-menu-name">We are based at:</h2>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.438609698479!2d73.1277!3d18.990488608179582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b4d2db250a71%3A0x8dcd6100b3503c89!2sPillai%20College%20of%20Engineering%2C%20New%20Panvel%2C%20Sector%207%2C%20New%20Panvel%2C%20Navi%20Mumbai%2C%20Maharashtra%20410207%2C%20India!5e0!3m2!1sen!2s!4v1647581729474!5m2!1sen!2s"
+                                                    width="375" height="200" style="border:0;"></iframe>
+                        </div>                        
+                    <div class="footer-social-links"> <svg class="footer-social-amoeba-svg"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 54">
+                            <path class="footer-social-amoeba-path"
+                                d="M223.06,43.32c-.77-7.2,1.87-28.47-20-32.53C187.78,8,180.41,18,178.32,20.7s-5.63,10.1-4.07,16.7-.13,15.23-4.06,15.91-8.75-2.9-6.89-7S167.41,36,167.15,33a18.93,18.93,0,0,0-2.64-8.53c-3.44-5.5-8-11.19-19.12-11.19a21.64,21.64,0,0,0-18.31,9.18c-2.08,2.7-5.66,9.6-4.07,16.69s.64,14.32-6.11,13.9S108.35,46.5,112,36.54s-1.89-21.24-4-23.94S96.34,0,85.23,0,57.46,8.84,56.49,24.56s6.92,20.79,7,24.59c.07,2.75-6.43,4.16-12.92,2.38s-4-10.75-3.46-12.38c1.85-6.6-2-14-4.08-16.69a21.62,21.62,0,0,0-18.3-9.18C13.62,13.28,9.06,19,5.62,24.47A18.81,18.81,0,0,0,3,33a21.85,21.85,0,0,0,1.58,9.08,16.58,16.58,0,0,1,1.06,5A6.75,6.75,0,0,1,0,54H236C235.47,54,223.83,50.52,223.06,43.32Z">
+                            </path>
+                        </svg>
+                        <a class="footer-social-link linkedin" href="#" target="_blank">
+                            <span class="hidden-link-text">Linkedin</span>
+                            <svg class="footer-social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path class="footer-social-icon-path"
+                                    d="M9,25H4V10h5V25z M6.501,8C5.118,8,4,6.879,4,5.499S5.12,3,6.501,3C7.879,3,9,4.121,9,5.499C9,6.879,7.879,8,6.501,8z M27,25h-4.807v-7.3c0-1.741-0.033-3.98-2.499-3.98c-2.503,0-2.888,1.896-2.888,3.854V25H12V9.989h4.614v2.051h0.065 c0.642-1.18,2.211-2.424,4.551-2.424c4.87,0,5.77,3.109,5.77,7.151C27,16.767,27,25,27,25z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="footer-social-link twitter" href="#" target="_blank">
+                            <span class="hidden-link-text">Twitter</span>
+                            <svg class="footer-social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
+                                <path class="footer-social-icon-path"
+                                    d="M 25.855469 5.574219 C 24.914063 5.992188 23.902344 6.273438 22.839844 6.402344 C 23.921875 5.75 24.757813 4.722656 25.148438 3.496094 C 24.132813 4.097656 23.007813 4.535156 21.8125 4.769531 C 20.855469 3.75 19.492188 3.113281 17.980469 3.113281 C 15.082031 3.113281 12.730469 5.464844 12.730469 8.363281 C 12.730469 8.773438 12.777344 9.175781 12.867188 9.558594 C 8.503906 9.339844 4.636719 7.246094 2.046875 4.070313 C 1.59375 4.847656 1.335938 5.75 1.335938 6.714844 C 1.335938 8.535156 2.261719 10.140625 3.671875 11.082031 C 2.808594 11.054688 2 10.820313 1.292969 10.425781 C 1.292969 10.449219 1.292969 10.46875 1.292969 10.492188 C 1.292969 13.035156 3.101563 15.15625 5.503906 15.640625 C 5.0625 15.761719 4.601563 15.824219 4.121094 15.824219 C 3.78125 15.824219 3.453125 15.792969 3.132813 15.730469 C 3.800781 17.8125 5.738281 19.335938 8.035156 19.375 C 6.242188 20.785156 3.976563 21.621094 1.515625 21.621094 C 1.089844 21.621094 0.675781 21.597656 0.265625 21.550781 C 2.585938 23.039063 5.347656 23.90625 8.3125 23.90625 C 17.96875 23.90625 23.25 15.90625 23.25 8.972656 C 23.25 8.742188 23.246094 8.515625 23.234375 8.289063 C 24.261719 7.554688 25.152344 6.628906 25.855469 5.574219 ">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="footer-social-link youtube" href="#" target="_blank">
+                            <span class="hidden-link-text">Youtube</span>
+                            <svg class="footer-social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path class="footer-social-icon-path"
+                                    d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="footer-social-link instagram" href="#" target="_blank">
+                            <span class="hidden-link-text">Instagram</span>
+                            <svg class="footer-social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <!-- <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.79 4.032c.864 0 1.568.704 1.568 1.568v8.8a1.572 1.572 0 0 1-1.568 1.568H7.21a1.572 1.572 0 0 1-1.568-1.568V7.6c0-.864.704-1.568 1.568-1.568h9.58zm-4.79 3.2c-1.728 0-3.136 1.408-3.136 3.136s1.408 3.136 3.136 3.136 3.136-1.408 3.136-3.136-1.408-3.136-3.136-3.136zm4.592-1.504a.525.525 0 0 1 .524.524c0 .288-.236.524-.524.524a.526.526 0 0 1-.524-.524.525.525 0 0 1 .524-.524zM12 18.024c-2.976 0-5.4-2.424-5.4-5.4s2.424-5.4 5.4-5.4 5.4 2.424 5.4 5.4-2.424 5.4-5.4 5.4z"fill="white"/> -->
+                                <path d="M17.34,5.46h0a1.2,1.2,0,1,0,1.2,1.2A1.2,1.2,0,0,0,17.34,5.46Zm4.6,2.42a7.59,7.59,0,0,0-.46-2.43,4.94,4.94,0,0,0-1.16-1.77,4.7,4.7,0,0,0-1.77-1.15,7.3,7.3,0,0,0-2.43-.47C15.06,2,14.72,2,12,2s-3.06,0-4.12.06a7.3,7.3,0,0,0-2.43.47A4.78,4.78,0,0,0,3.68,3.68,4.7,4.7,0,0,0,2.53,5.45a7.3,7.3,0,0,0-.47,2.43C2,8.94,2,9.28,2,12s0,3.06.06,4.12a7.3,7.3,0,0,0,.47,2.43,4.7,4.7,0,0,0,1.15,1.77,4.78,4.78,0,0,0,1.77,1.15,7.3,7.3,0,0,0,2.43.47C8.94,22,9.28,22,12,22s3.06,0,4.12-.06a7.3,7.3,0,0,0,2.43-.47,4.7,4.7,0,0,0,1.77-1.15,4.85,4.85,0,0,0,1.16-1.77,7.59,7.59,0,0,0,.46-2.43c0-1.06.06-1.4.06-4.12S22,8.94,21.94,7.88ZM20.14,16a5.61,5.61,0,0,1-.34,1.86,3.06,3.06,0,0,1-.75,1.15,3.19,3.19,0,0,1-1.15.75,5.61,5.61,0,0,1-1.86.34c-1,.05-1.37.06-4,.06s-3,0-4-.06A5.73,5.73,0,0,1,6.1,19.8,3.27,3.27,0,0,1,5,19.05a3,3,0,0,1-.74-1.15A5.54,5.54,0,0,1,3.86,16c0-1-.06-1.37-.06-4s0-3,.06-4A5.54,5.54,0,0,1,4.21,6.1,3,3,0,0,1,5,5,3.14,3.14,0,0,1,6.1,4.2,5.73,5.73,0,0,1,8,3.86c1,0,1.37-.06,4-.06s3,0,4,.06a5.61,5.61,0,0,1,1.86.34A3.06,3.06,0,0,1,19.05,5,3.06,3.06,0,0,1,19.8,6.1,5.61,5.61,0,0,1,20.14,8c.05,1,.06,1.37.06,4S20.19,15,20.14,16ZM12,6.87A5.13,5.13,0,1,0,17.14,12,5.12,5.12,0,0,0,12,6.87Zm0,8.46A3.33,3.33,0,1,1,15.33,12,3.33,3.33,0,0,1,12,15.33Z"fill="white">
+
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="footer-copyright-wrapper">
+                        <p class="footer-copyright-text">
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('contact-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default behavior of the link click
+        document.getElementById('contact-footer').scrollIntoView({ behavior: 'smooth' }); // Scroll to the footer
+        });
+    </script>
+</body>
+</html>

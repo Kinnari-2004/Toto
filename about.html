@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/5b7efaafb7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="sub-header" >
+        <nav>
+            <a href="index.php"><img id="logo" src="media/web logo.png" alt=""></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa-solid fa-xmark" style="color: #ffffff;" onclick="hidemenu()"></i>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <!-- <li><a href="#" id="contact-link">Contact Us</a></li> -->
+                    <!-- <li><a href="#">Our App</a></li> -->
+                    <!-- <a href="login.php"><button id="login">Login</button></a> -->
+                    <!-- <a href="registration.php"><button id="signup">Register</button></a> -->
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" style="color: #ffffff;" onclick="showmenu()"></i>
+        </nav>
+        <script>
+            var navLinks = document.getElementById("navLinks");
+            function showmenu(){
+                navLinks.style.right = "0";
+            }
+            function hidemenu(){
+                navLinks.style.right = "-200px";
+            }
+        </script>
+         <h1>About Us</h1>
+        </section>
+         <section class="about">
+            <h3 style="font-weight: bold">
+                TOTO : SHARE THE RIDE, SHARE THE JOY!
+            </h3>
+            <div class="about-info">
+                <div class="about-img">
+                    <img src="media/0.png">
+                </div>
+                <div id="para">
+                <p id="a"> About Toto Auto Booking App</p>
+    
+                 <p>   At Toto Auto Booking App, we're revolutionizing the way people commute by providing a seamless and
+                    convenient solution for booking auto-rickshaws. Our mission is to make transportation easier, safer,
+                    and more reliable for everyone.
+                </p>
+                   <br>
+                <p id="a"> Our Vision</p>
+                   <p> Our vision is to become the leading platform for auto-rickshaw bookings, transforming the way people
+                    navigate urban environments. We aim to create a world where commuting is not just a means to an end
+                    but an enjoyable and stress-free experience.
+                </p>
+                </div>
+            </div>
+        </section>
+    
+        <section class="team">
+            <h1>Meet Our Team</h1>
+            <div class="team-cards">
+                <div class="card">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-info">
+                        <h2 class="card-name">Kinnari</h2>
+                        <p class="card-role">Member</p>
+                        <p class="card-email">vkinnari22it@student.mes.ac.in</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-info">
+                        <h2 class="card-name">Pronit</h2>
+                        <p class="card-role">Member</p>
+                        <p class="card-email">gpronit23it@student.mes.ac.in</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+           
+                <div class="card">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-info">
+                        <h2 class="card-name">Janhavi</h2>
+                        <p class="card-role">Member</p>
+                        <p class="card-email">soni22it@student.mes.ac.in</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="foot">
+            <p>&#169 Toto,  All  Rights  Reserved.</p>
+        </footer>
+    </body>
+    </html>
+    
+
+    
+</body>
+</html>

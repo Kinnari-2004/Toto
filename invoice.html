@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    max-width: 540px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.price{
+    padding-bottom: 16px;
+    border-bottom: 1px solid #00ad37;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/* Style for the invoice details */
+#bookingDetails {
+    margin-top: 12px;
+}
+
+/* Style for each detail row */
+#bookingDetails p {
+    margin: 12px;
+    font-size: 16px;
+}
+
+/* Style for the price */
+#bookingDetails .price {
+    font-weight: bold;
+}
+
+/* Style for the links */
+#bookingDetails a {
+    padding-top: 8px;
+    /* display: block; */
+    text-decoration: none;
+    color: #00ad37;
+}
+
+#bookingDetails a:hover {
+    text-decoration: underline;
+}
+
+/* Style for the span values */
+#bookingDetails span {
+    float: right;
+    font-weight: bold;
+}
+
+    </style>
+    <title>Invoice</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Your ride has been booked successfully!</h1>
+    <h2>Invoice</h2>
+    <div id="bookingDetails">
+        <p>Pickup Location: <span id="pickupLocation"></span></p>
+        <p>Destination: <span id="destinationLocation"></span></p>
+        <p>Estimated Fare: <span id="fare"></span></p>
+        <p class="price">Payment Mode: Cash</p>
+        <p>Driver Name: John Doe</p>
+        <p>Driver Contact: +1234567890</p>
+        <p>Auto Details: MH57FG9087</p>
+        <a href="feedback.html" style="float: left;">Share Your Experience with Toto</a><br>
+        <a href="index.php" style="float: right;margin-top: -20px;">Go to Homepage</a>
+
+        
+        <!-- You can add more details here if needed -->
+    </div>
+</div>
+
+    <script>
+        // Retrieve booking details from sessionStorage
+    const pickupLocation = sessionStorage.getItem("pickupLocation");
+    const destinationLocation = sessionStorage.getItem("destinationLocation");
+    const fareText = sessionStorage.getItem("fare");
+
+    // Extract fare value from the fare text
+    const fare = fareText ? fareText.split(": ")[1] : "";
+
+    // Display booking details on the page
+    document.getElementById("pickupLocation").innerText = pickupLocation;
+    document.getElementById("destinationLocation").innerText = destinationLocation;
+    document.getElementById("fare").innerText = fare;
+    </script>
+</body>
+</html>

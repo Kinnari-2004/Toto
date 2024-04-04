@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        /* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the container */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for the form heading */
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for the form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+form p{
+    text-align: center;
+    padding: 8px;
+}
+form a{
+    padding-top: 8px;
+    text-decoration: none;
+    color: #008a2c;
+    text-align: center;
+}
+form a:hover {
+    text-decoration: underline;
+}
+
+
+/* Style for the form labels */
+form label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Style for the form inputs */
+form input[type="text"],
+form input[type="email"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for the submit button */
+form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28783b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #3ab055;
+}
+
+/* Style for the select element */
+form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path fill="%23007bff" d="M6 5.25L0 .75 1.5 0l4.5 4.5 4.5-4.5L12 .75z"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+    background-color: #fff;
+    padding-right: 30px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback Form</h2>
+        <form action="feedback.php" method="POST" id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="5">Excellent</option>
+                <option value="4">Very Good</option>
+                <option value="3">Good</option>
+                <option value="2">Fair</option>
+                <option value="1">Poor</option>
+            </select>
+            
+            <button type="submit">Submit</button>
+            <a href="index.php">Back to Home</a>
+            <p id="feedbackStatus"></p>
+        </form>
+    </div>
+    <script>
+        // Function to handle form submission using AJAX
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var formData = new FormData(this); // Create a new FormData object to collect form data
+            var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+
+            // Configure the XMLHttpRequest object
+            xhr.open('POST', 'feedback.php', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) { // When the request is complete
+                    if (xhr.status === 200) { // If the request was successful
+                        document.getElementById('feedbackStatus').textContent = xhr.responseText; // Display the feedback submission status
+                    } else {
+                        console.error('Error: ' + xhr.status); // Log error if request was not successful
+                    }
+                }
+            };
+
+            // Send the form data
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>
